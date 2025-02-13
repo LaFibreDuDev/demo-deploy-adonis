@@ -22,4 +22,4 @@ jobs:
 
       - name: Deploy via SSH
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd /srv/www/mon-app && bash deploy.sh"
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "source ~/.profile && cd /srv/www/mon-app && bash deploy.sh"
