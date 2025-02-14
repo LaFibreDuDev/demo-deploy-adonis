@@ -1,0 +1,31 @@
+name: Run Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Copy environment variables
+        run: cp .env.example .env
+
+      - name: Generate application key
+        run: node ace generate:key
+
+      - name: Run tests
+        run: npm test
