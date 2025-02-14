@@ -1,10 +1,14 @@
 import Post from '#models/post'
 import type { HttpContext } from '@adonisjs/core/http'
+import { PostRepository } from '../repositories/post_repository.js'
+import { inject } from '@adonisjs/core'
 
+@inject()
 export default class HomeController {
-  async index({ view }: HttpContext) {
-    const posts = await Post.all()
+  constructor(private postRepository: PostRepository) {}
 
+  async index({ view }: HttpContext) {
+    const posts = await this.postRepository.findAll()
     return view.render('pages/home', { posts })
   }
 }
