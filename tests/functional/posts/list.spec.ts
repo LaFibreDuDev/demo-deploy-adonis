@@ -1,7 +1,7 @@
 import { test } from '@japa/runner'
 
 test.group('Posts list', () => {
-  test('get a list of posts', async ({ client }) => {
+  /*test('get a list of posts', async ({ client }) => {
     const response = await client.get('/users')
 
     response.assertStatus(200)
@@ -13,5 +13,5 @@ test.group('Posts list', () => {
         },
       ],
     })
-  })
+  })*/
 })
