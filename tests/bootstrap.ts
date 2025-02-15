@@ -4,6 +4,7 @@ import type { Config } from '@japa/runner/types'
 import { pluginAdonisJS } from '@japa/plugin-adonisjs'
 import testUtils from '@adonisjs/core/services/test_utils'
 import { apiClient } from '@japa/api-client'
+import { test } from '@japa/runner'
 
 /**
  * This file is imported by the "bin/test.ts" entrypoint file
@@ -23,16 +24,8 @@ export const plugins: Config['plugins'] = [assert(), apiClient(), pluginAdonisJS
  * The teardown functions are executed after all the tests
  */
 export const runnerHooks: Required<Pick<Config, 'setup' | 'teardown'>> = {
-  setup: [
-    () => {
-      console.log('running before all the tests')
-    },
-  ],
-  teardown: [
-    () => {
-      console.log('running after all the tests')
-    },
-  ],
+  setup: [() => testUtils.db().migrate(), () => testUtils.db().seed()],
+  teardown: [() => testUtils.db().truncate()],
 }
 
 /**

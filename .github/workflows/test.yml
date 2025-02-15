@@ -9,6 +9,21 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: adonis
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: adonis_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U adonis"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -29,3 +44,9 @@ jobs:
 
       - name: Run tests
         run: npm test
+        env:
+          DB_HOST: 127.0.0.1
+          DB_PORT: 5432
+          DB_USER: adonis
+          DB_PASSWORD: password
+          DB_DATABASE: adonis_test
