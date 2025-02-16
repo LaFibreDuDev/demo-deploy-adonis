@@ -47,10 +47,10 @@ jobs:
       - name: Generate application key
         run: node ace generate:key
 
-      - name: Installer Playwright et ses navigateurs
-        run: npx playwright install --with-deps
+      - name: Setup Playwright (only chromium)
+        run: npx playwright install chromium --with-deps
 
-      - name: Lancer AdonisJS en arrière-plan
+      - name: Start adonisjs server
         run: node ace serve --watch &
         env:
           DB_HOST: 127.0.0.1
