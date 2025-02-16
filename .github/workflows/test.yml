@@ -47,6 +47,18 @@ jobs:
       - name: Generate application key
         run: node ace generate:key
 
+      - name: Installer Playwright et ses navigateurs
+        run: npx playwright install --with-deps
+
+      - name: Lancer AdonisJS en arrière-plan
+        run: node ace serve --watch &
+        env:
+          DB_HOST: 127.0.0.1
+          DB_PORT: 5432
+          DB_USER: adonis
+          DB_PASSWORD: password
+          DB_DATABASE: adonis_test
+
       - name: Run tests
         run: npm test
         env:
