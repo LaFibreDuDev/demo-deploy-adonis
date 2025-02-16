@@ -33,6 +33,11 @@ jobs:
         with:
           node-version: 20
 
+      - uses: nanasess/setup-chromedriver@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - run: chromedriver --version
+
       - name: Install dependencies
         run: npm ci
 

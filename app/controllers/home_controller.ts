@@ -7,8 +7,10 @@ import { inject } from '@adonisjs/core'
 export default class HomeController {
   constructor(private postRepository: PostRepository) {}
 
-  async index({ view }: HttpContext) {
+  async index({ view, request }: HttpContext) {
     const posts = await this.postRepository.findAll()
-    return view.render('pages/home', { posts })
+    const queryParams = request.qs()
+
+    return view.render('pages/home', { posts, queryParams })
   }
 }
