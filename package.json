@@ -4,12 +4,9 @@
   "private": true,
   "type": "module",
   "license": "UNLICENSED",
-  "bin": {
-    "ace": "./server.cjs"
-  },
   "scripts": {
     "postbuild": "cp server.cjs build/server.cjs",
-    "start": "node bin/server.js",
+    "start": "node server.cjs",
     "build": "node ace build",
     "dev": "node ace serve --hmr",
     "test": "node ace test",
