@@ -1,4 +1,4 @@
-import Post from '#models/post'
+//import Post from '#models/post'
 import type { HttpContext } from '@adonisjs/core/http'
 import { PostRepository } from '../repositories/post_repository.js'
 import { inject } from '@adonisjs/core'
