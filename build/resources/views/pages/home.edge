@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test de déploiement en prod</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+  >
+</head>
+<body>
+  <main class="container">
+    <h2>Recherche d'un post</h2>
+    <form id="monform">
+      <label for="title">Titre de l'article à rechercher</label>
+      <input type="text" id="title" name="title" />
+      <button type="submit">Envoyer</button>
+    </form>
+
+    @if(queryParams.title)
+      <div id="result">Résultat : {{ queryParams.title }}</div>
+    @end
+
+    <h1>Affichage des posts</h1>
+
+    @each(post in posts)
+      <article>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.content }}</p>
+      </article>
+    @else
+      <p>Il n'y a pas d'articles sur le site !</p>
+    @end
+
+    <h2>Une modification en temps réel (13/02) !</h2>
+    <p>On fait un test de ci/cd en production à <b style="font-size: 50px;">00:23</b> pour vérifier que l'automatisation fonctionne !</p>
+  </main>
+
+</body>
+</html>

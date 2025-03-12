@@ -1,0 +1,1 @@
+{"version":3,"file":"post_presenter.js","sourceRoot":"","sources":["../../../app/presenters/post_presenter.ts"],"names":[],"mappings":"AAEA,MAAM,CAAC,OAAO,OAAO,aAAa;IACZ;IAApB,YAAoB,IAAU;QAAV,SAAI,GAAJ,IAAI,CAAM;IAAG,CAAC;IAE3B,MAAM;QACX,OAAO;YACL,EAAE,EAAE,IAAI,CAAC,IAAI,CAAC,EAAE;YAChB,KAAK,EAAE,IAAI,CAAC,IAAI,CAAC,KAAK;SACvB,CAAA;IACH,CAAC;CACF"}
